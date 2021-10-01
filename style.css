@@ -8,15 +8,19 @@ h3,h5{
 }
 #welcome{
     color: whitesmoke;
-    margin-left: 30%;
+   /* margin-left: 30%;*/
 }
 hr:not([size]) {
     color: gray;
     height: 10px;
 }
+
 #motto{
-    margin-left: 34%;
+   /* margin-left: 34%;*/
     color: darkgray;
+}
+.card-title{
+    font-weight: bolder;
 }
 #add_note_btn,.btn,.btn-primary {
     background-color: black;
@@ -54,4 +58,8 @@ hr:not([size]) {
     
     color: black;
     font-weight: 600;
+}
+#Your_Notes{
+    color: aliceblue;
+    /*margin-left: 41.5%;*/
 }
