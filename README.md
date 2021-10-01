@@ -8,5 +8,5 @@
 *   CSS
 *   JS
                                 
-            - - - - 
-            Hope you like it !
+- - - - 
+Hope you like it !
