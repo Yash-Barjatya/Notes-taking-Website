@@ -1,0 +1,57 @@
+body {
+    background-color: black;
+}
+h3,h5{
+
+    color:#242525;
+
+}
+#welcome{
+    color: whitesmoke;
+    margin-left: 30%;
+}
+hr:not([size]) {
+    color: gray;
+    height: 10px;
+}
+#motto{
+    margin-left: 34%;
+    color: darkgray;
+}
+#add_note_btn,.btn,.btn-primary {
+    background-color: black;
+    border: black;
+    color: white;
+}
+#add_note_btn:hover,.btn:hover,.btn-primary:hover,.btn-primary:focus{
+    background-color: white;
+    border-color: white;
+    color: black;
+    box-shadow:0 0px 0px 2px gainsboro ;
+}
+
+.card{
+    
+    background-color: #41464b;
+}
+#add_note_Text,.form-control{
+    background-color: #41464b;
+    border: 1px solid black;
+}
+#add_note_Text:focus,.form-control:focus {
+    color: whitesmoke;
+    background-color: black;
+    border-color: gainsboro;
+    outline: 0;
+    box-shadow: 0 0px 0px 2px gainsboro;
+}
+#search_textarea{
+    color: white;
+    background-color: black;
+    border-color: black;
+}
+.card-text{
+    
+    color: black;
+    font-weight: 600;
+}
