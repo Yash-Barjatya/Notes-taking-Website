@@ -6,6 +6,23 @@ displayQuote();// this is called so that even if we refresh all the  already exi
 let add_note_btn = document.getElementById('add_note_btn');
 
 add_note_btn.addEventListener("click", function (e) {
+    // adding alert div again after removal from setTimeout function
+    let main_card = document.getElementById('main_card')
+    let success_div = document.createElement('div')
+    main_card.appendChild(success_div)
+    main_card.insertBefore(success_div, main_card.firstElementChild.nextElementSibling.nextElementSibling)
+    success_div.id = "liveAlertPlaceholder"
+    var alertPlaceholder = document.getElementById('liveAlertPlaceholder')
+    //console.log(main_card)
+
+    // funciton to  ALERT success
+    function alert(message, type) {
+        var wrapper = document.createElement('div')
+        wrapper.innerHTML = '<div class="alert alert-' + type + ' alert-dismissible" role="alert">' + message + '<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button></div>'
+
+        alertPlaceholder.append(wrapper)
+    }
+
     let add_note_text = document.getElementById('add_note_text');
     let notes = localStorage.getItem("notes");
     if (notes == null) {
@@ -18,9 +35,15 @@ add_note_btn.addEventListener("click", function (e) {
     localStorage.setItem("notes", JSON.stringify(notesObj));
     add_note_text.value = "";// so that everytime after creation of new notes the texarea is set to blank
     //console.log(notesObj);
-    displayNotes()
 
+    alert('Your Note is successfully added !', 'success')
+    displayNotes()
+    // to remove the alert after 5 sec
+    setTimeout(function () {
+        alertPlaceholder.remove();
+    }, 5000);
 })
+
 
 // function to display notes
 function displayNotes() {
@@ -47,7 +70,7 @@ function displayNotes() {
     }
     else {
         notes_element.innerHTML = "You have not added any Notes !!";
-        notes_element.setAttribute("style", "color : aliceblue;font-size:20px;");
+        notes_element.setAttribute("style", "color : aliceblue;font-size:20px; font-family: 'Roboto',sans-serif;");
     }
 }
 
