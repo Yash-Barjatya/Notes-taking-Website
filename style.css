@@ -73,3 +73,16 @@ hr:not([size]) {
     color:#fff;
     font-size: larger;
 }
+#quote{
+    color: lavender;
+    text-align: center;
+    font-style: italic;
+    font-size: 18px;
+}
+#author{
+    float: right;
+    color: slategray;
+    font-weight: bold;
+    font-style: italic;
+    
+}

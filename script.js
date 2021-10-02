@@ -1,5 +1,6 @@
 console.log("Up-2-Date ready to start")
-displayNotes();// this is called so that even if we refresh all the  already existing notes do show up
+displayNotes();
+displayQuote();// this is called so that even if we refresh all the  already existing notes do show up
 // add new notes to local storage
 
 let add_note_btn = document.getElementById('add_note_btn');
@@ -86,3 +87,16 @@ search_textarea.addEventListener("input", function () {
         }
     })
 })
+let quote = document.getElementById('quote');
+let author = document.getElementById('author');
+
+function displayQuote() {
+    fetch("http://quotable.io/random")
+        .then(res => res.json())// to convert into json format
+        .then(data => {
+            /*quote.innerHTML = "\"" + data.content + "\""
+            author.innerHTML = "~ " + data.author*/
+            quote.innerHTML = `"${data.content}"`
+            author.innerHTML = `~  ${data.author}`
+        })
+}
