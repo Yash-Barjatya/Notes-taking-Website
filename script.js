@@ -46,7 +46,7 @@ function displayNotes() {
     }
     else {
         notes_element.innerHTML = "You have not added any Notes !!";
-        notes_element.setAttribute("style", "color : aliceblue;font-size:20px");
+        notes_element.setAttribute("style", "color : aliceblue;font-size:20px;");
     }
 }
 
