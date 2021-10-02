@@ -18,7 +18,7 @@ add_note_btn.addEventListener("click", function (e) {
     // funciton to  ALERT success
     function alert(message, type) {
         var wrapper = document.createElement('div')
-        wrapper.innerHTML = '<div class="alert alert-' + type + ' alert-dismissible" role="alert">' + message + '<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button></div>'
+        wrapper.innerHTML = '<div class="alert alert-' + type + ' alert-dismissible" role="alert">' + '<i class="fa fa-check" aria-hidden="true"></i>' + " " + message + '<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button></div>'
 
         alertPlaceholder.append(wrapper)
     }
@@ -41,7 +41,7 @@ add_note_btn.addEventListener("click", function (e) {
     // to remove the alert after 5 sec
     setTimeout(function () {
         alertPlaceholder.remove();
-    }, 5000);
+    }, 1500);
 })
 
 
@@ -60,7 +60,7 @@ function displayNotes() {
             <div class="card-body">
                 <h5 class="card-title">Note ${index + 1}</h5>
                 <p class="card-text">${element}</p>
-                <button  class="btn btn-primary" id="${index}" onclick="deleteNote(this.id)">Delete Note</button>
+                <button  class="btn btn-primary" id="${index}" onclick="warning(this.id)">Delete Note</button>
                 </div>
         </div>`// this on click part is done so that we can get index of the note to be deleted
     });
@@ -74,10 +74,35 @@ function displayNotes() {
     }
 }
 
+// warning message on clciking delete note
+function warning(index) {
+    let toastLiveExample = document.getElementById('liveToast')
+
+    let toast = new bootstrap.Toast(toastLiveExample)
+
+    toast.show()
+
+    let confirm_delete = document.getElementById('confirm_delete');
+    confirm_delete.addEventListener('click', function () {
+        console.log(index)
+        deleteNote(index);
+
+        document.getElementById("close_warning").click();
+    })/*
+    let close_warning = document.getElementById('close_warning');
+    close_warning.addEventListener('click', function () {
+        document.getElementById("close_warning").click();
+        console.log(index)
+    })*/
+}
+
+
+
+
 // function to delete notes
 function deleteNote(index) {
-    let num = parseInt(index);
-    //console.log(`Deleting note ${num + 1}`)
+    //let num = parseInt(index);
+    //console.log(`Deleting note ${ num + 1 } `)
     // console.log("Deleting note", (num + 1))
     let notes = localStorage.getItem("notes");
     if (notes == null) {
@@ -85,6 +110,7 @@ function deleteNote(index) {
 
     }
     else notesObj = JSON.parse(notes);
+    console.log(index)
     notesObj.splice(index, 1)// 1 element to be deleted whose index = index\
     localStorage.setItem("notes", JSON.stringify(notesObj));// updating local storage with this new notesObj array
     displayNotes();
@@ -95,7 +121,7 @@ let search_textarea = document.getElementById('search_textarea');
 search_textarea.addEventListener("input", function () {
 
     let searchVal = search_textarea.value;
-    // console.log(`event triggered !! ${searchVal} was searched`)
+    // console.log(`event triggered!! ${ searchVal } was searched`)
     let noteCards = document.getElementsByClassName('noteCards');
     Array.from(noteCards).forEach(function (element) {
         let cardTxt = element.getElementsByTagName("p")[0].innerText// as for classnotesCard , the  elements like div etc has only one paragraph tag inside them but still we had addded 0 index
@@ -120,6 +146,6 @@ function displayQuote() {
             /*quote.innerHTML = "\"" + data.content + "\""
             author.innerHTML = "~ " + data.author*/
             quote.innerHTML = `"${data.content}"`
-            author.innerHTML = `~  ${data.author}`
+            author.innerHTML = `~${data.author} `
         })
 }
