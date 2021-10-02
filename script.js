@@ -102,7 +102,7 @@ search_textarea.addEventListener("input", function () {
         // . innerText as else it would be just element and to use include funtion we need string
 
         //  console.log(cardTxt);
-        if (cardTxt.includes(searchVal.toLowerCase()) || cardTxt.includes(searchVal.toUpperCase())) {// so that irrespective of the case the text is searched
+        if (cardTxt.toLowerCase().includes(searchVal.toLowerCase()) || cardTxt.toUpperCase().includes(searchVal.toUpperCase())) {// so that irrespective of the case the text is searched
             element.style.display = "block";
         }
         else {
