@@ -1,4 +1,6 @@
 console.log("Up-2-Date ready to start")
+
+//console.log(quote_num + 1)
 displayNotes();
 displayQuote();// this is called so that even if we refresh all the  already existing notes do show up
 // add new notes to local storage
@@ -81,12 +83,12 @@ function warning(index) {
     let toast = new bootstrap.Toast(toastLiveExample)
 
     toast.show()
-
+    console.log("entered warning function")
     let confirm_delete = document.getElementById('confirm_delete');
     confirm_delete.addEventListener('click', function () {
         console.log(index)
         deleteNote(index);
-
+        console.log("clicked delete")
         document.getElementById("close_warning").click();
     })/*
     let close_warning = document.getElementById('close_warning');
@@ -101,6 +103,7 @@ function warning(index) {
 
 // function to delete notes
 function deleteNote(index) {
+    console.log("entered delete function")
     //let num = parseInt(index);
     //console.log(`Deleting note ${ num + 1 } `)
     // console.log("Deleting note", (num + 1))
@@ -138,14 +141,24 @@ search_textarea.addEventListener("input", function () {
 })
 let quote = document.getElementById('quote');
 let author = document.getElementById('author');
+// Fetch a random quote from the Quotable API
+async function displayQuote() {
+    let quote_num = Math.floor(Math.random() * 1643)
+    const response = await fetch("https://type.fit/api/quotes")
+    const data = await response.json();
+    if (response.ok) {
+        // Update DOM elements
+        quote.innerHTML = `"${data[quote_num].text}"`
+        author.innerHTML = `~${data[quote_num].author} `
+    }
+    else {
+        fetch("http://api.quotable.io/random")
+            .then(res => res.json())// to convert into json format
+            .then(data => {
+                quote.innerHTML = `"${data.content}"`
+                author.innerHTML = `~${data.author} `
+            })
 
-function displayQuote() {
-    fetch("http://quotable.io/random")
-        .then(res => res.json())// to convert into json format
-        .then(data => {
-            /*quote.innerHTML = "\"" + data.content + "\""
-            author.innerHTML = "~ " + data.author*/
-            quote.innerHTML = `"${data.content}"`
-            author.innerHTML = `~${data.author} `
-        })
+    }
 }
+
