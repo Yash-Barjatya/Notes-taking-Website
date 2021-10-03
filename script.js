@@ -26,6 +26,7 @@ add_note_btn.addEventListener("click", function (e) {
     }
 
     let add_note_text = document.getElementById('add_note_text');
+    let add_note_title = document.getElementById('add_note_title');
     let notes = localStorage.getItem("notes");
     if (notes == null) {
         notesObj = [];
@@ -33,9 +34,14 @@ add_note_btn.addEventListener("click", function (e) {
     else {
         notesObj = JSON.parse(notes);
     }
-    notesObj.push(add_note_text.value)
+    let obj = {
+        title: add_note_title.value,
+        text: add_note_text.value,
+    }
+    notesObj.push(obj)// therefore notesObj is now array of object
     localStorage.setItem("notes", JSON.stringify(notesObj));
     add_note_text.value = "";// so that everytime after creation of new notes the texarea is set to blank
+    add_note_title.value = "";// so that everytime after creation of new notes the texarea is set to blank
     //console.log(notesObj);
 
     alert('Your Note is successfully added !', 'success')
@@ -60,8 +66,8 @@ function displayNotes() {
         html += `
         <div class="noteCards my-2 mx-2 card" style="width: 18rem;">
             <div class="card-body">
-                <h5 class="card-title">Note ${index + 1}</h5>
-                <p class="card-text">${element}</p>
+                <h5 class="card-title">${element.title}</h5>
+                <p class="card-text">${element.text}</p>
                 <button  class="btn btn-primary" id="${index}" onclick="warning(this.id)">Delete Note</button>
                 </div>
         </div>`// this on click part is done so that we can get index of the note to be deleted

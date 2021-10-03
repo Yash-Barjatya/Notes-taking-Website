@@ -45,11 +45,21 @@ hr:not([size]) {
     
     background-color: #41464b;
 }
-#add_note_Text,.form-control{
+.form-control{
     background-color: #41464b;
     border: 1px solid black;
+    color: black;
+}#add_note_text{
+    color:black;
+    font-weight: 600;
+    font-size: large;
 }
-#add_note_Text:focus,.form-control:focus {
+#add_note_title{
+    color:black;
+    font-weight: 600;
+    font-size: larger;
+}
+#add_note_text:focus,#add_note_title:focus,.form-control:focus {
     color: whitesmoke;
     background-color: black;
     border-color: gainsboro;
