@@ -76,8 +76,8 @@ function displayNotes() {
         notes_element.innerHTML = html;
     }
     else {
-        notes_element.innerHTML = "You have not added any Notes !!";
-        notes_element.setAttribute("style", "color : aliceblue;font-size:20px; font-family: 'Roboto',sans-serif;");
+        notes_element.innerHTML = "You have not added any Notes ! !";
+        notes_element.setAttribute("style", "color : aliceblue;font-size:25px; font-family: 'Architects Daughter',sans-serif;");
     }
 }
 
