@@ -31,9 +31,29 @@
                     </li>
                 </ul>
                 <form class="d-flex">
-                    <input class="form-control me-2" id="search_textarea" type="search" placeholder="Search here..."
-                        aria-label="Search">
-                    <button class="btn btn-outline-success" id="success_btn" type="submit">Search </button>
+                    <input class="form-control me-2" id="search_textarea" placeholder="Search here..."
+                        aria-label="Search"><button id="close_search_btn"><i class="fa fa-close" id="close_search"
+                            style="color:#DDDDDD;"></i></button>
+                    <div class="dropdown">
+                        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton2"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            SEARCH TYPE
+                        </button>
+                        <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="dropdownMenuButton2">
+                            <li><button class="dropdown-item" id="search_by_title" type="button"><b>Search in
+                                        title</b></button></li>
+                            <li>
+                                <hr class="dropdown-divider">
+                            </li>
+                            <li><button class="dropdown-item" type="button" id="search_by_body"><b>Search in
+                                        body</b></button></li>
+                            <li>
+                                <hr class="dropdown-divider">
+                            </li>
+                            <li><button class="dropdown-item" type="button" id="search_by_both"><b>Search
+                                        everywhere</b></button></li>
+                        </ul>
+                    </div>
                 </form>
             </div>
         </div>
@@ -57,7 +77,7 @@
                     <textarea class="form-control" id="add_note_title" rows="2" placeholder="Add Title"></textarea>
                 </div>
                 <div class="mb-3">
-                    <textarea class="form-control" id="add_note_text" rows="4" placeholder="Add description"></textarea>
+                    <textarea class="form-control" id="add_note_text" rows="4" placeholder="Add Body"></textarea>
                 </div>
                 <!--<div id="liveAlertPlaceholder"></div>-->
                 <button type=" button" class="btn btn-primary" id="add_note_btn">Add Note</button>
@@ -73,7 +93,7 @@
     </div>
     <br>
     <footer class="copyrightText">
-        <p> &copy 2021 Yash-Barjatya. All rights reserved</p>
+        <p> Copyright &copy 2021 Yash-Barjatya. All rights reserved</p>
     </footer>
     <div class="position-fixed bottom-0 end-0 p-3" style="z-index: 11">
         <div id="liveToast" class="toast" role="alert" aria-live="assertive" aria-atomic="true">

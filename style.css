@@ -6,6 +6,9 @@ h3,h5{
     color:#242525;
 
 }
+.d-flex{
+    margin-right: 2%;
+}
 #welcome{
     color: whitesmoke;
    /* margin-left: 30%;*/
@@ -70,6 +73,16 @@ hr:not([size]) {
     color: white;
     background-color: black;
     border-color: black;
+    display: none;
+}
+#close_search{
+    margin-right: 2%;
+    margin-top: 3%;
+}
+#close_search_btn{
+    background-color: #212529;
+    border: 1px solid #212529;
+    display: none;
 }
 .card-text{
     

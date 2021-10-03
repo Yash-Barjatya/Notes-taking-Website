@@ -6,13 +6,12 @@ displayQuote();// this is called so that even if we refresh all the  already exi
 // add new notes to local storage
 
 let add_note_btn = document.getElementById('add_note_btn');
-
 add_note_btn.addEventListener("click", function (e) {
     // adding alert div again after removal from setTimeout function
     let main_card = document.getElementById('main_card')
     let success_div = document.createElement('div')
     main_card.appendChild(success_div)
-    main_card.insertBefore(success_div, main_card.firstElementChild.nextElementSibling.nextElementSibling)
+    main_card.insertBefore(success_div, main_card.firstElementChild.nextElementSibling.nextElementSibling.nextElementSibling)
     success_div.id = "liveAlertPlaceholder"
     var alertPlaceholder = document.getElementById('liveAlertPlaceholder')
     //console.log(main_card)
@@ -126,25 +125,127 @@ function deleteNote(index) {
 }
 
 // to sort notes by search
+
 let search_textarea = document.getElementById('search_textarea');
-search_textarea.addEventListener("input", function () {
+let search_by_body = document.getElementById('search_by_body');
+let search_by_title = document.getElementById('search_by_title');
+let search_by_both = document.getElementById('search_by_both');
+let dropdown_title = document.getElementById('dropdownMenuButton2');
+let close_search_btn = document.getElementById('close_search_btn');
 
-    let searchVal = search_textarea.value;
-    // console.log(`event triggered!! ${ searchVal } was searched`)
-    let noteCards = document.getElementsByClassName('noteCards');
-    Array.from(noteCards).forEach(function (element) {
-        let cardTxt = element.getElementsByTagName("p")[0].innerText// as for classnotesCard , the  elements like div etc has only one paragraph tag inside them but still we had addded 0 index
-        // . innerText as else it would be just element and to use include funtion we need string
+//if (search_by_title) {
+search_by_title.addEventListener('click', function () {
 
-        //  console.log(cardTxt);
-        if (cardTxt.toLowerCase().includes(searchVal.toLowerCase()) || cardTxt.toUpperCase().includes(searchVal.toUpperCase())) {// so that irrespective of the case the text is searched
-            element.style.display = "block";
-        }
-        else {
-            element.style.display = "none";
-        }
-    })
+    dropdown_title.innerHTML = search_by_title.innerHTML;
+    close_search_btn.click();
+    search_textarea.style.display = "block";
+    close_search_btn.style.display = "block";
+
+    search_title();
 })
+// }
+//else if (search_by_body) {
+search_by_body.addEventListener('click', function () {
+
+    dropdown_title.innerHTML = search_by_body.innerHTML;
+    close_search_btn.click();
+    search_textarea.style.display = "block";
+    close_search_btn.style.display = "block";
+
+    search_body()
+})
+//}
+// else {
+search_by_both.addEventListener('click', function () {
+
+    dropdown_title.innerHTML = search_by_both.innerHTML;
+    close_search_btn.click();
+    search_textarea.style.display = "block";
+    close_search_btn.style.display = "block";
+
+    search_both()
+})
+//}
+close_search_btn.addEventListener('click', function () {
+    search_textarea.value = null;
+    displayNotes();
+})
+// sort notes by title and body
+function search_both() {
+
+    search_textarea.addEventListener("input", function () {
+
+        let searchVal = search_textarea.value;
+        // console.log(`event triggered!! ${ searchVal } was searched`)
+        let noteCards = document.getElementsByClassName('noteCards');
+        Array.from(noteCards).forEach(function (element) {
+            let cardTxt = element.getElementsByTagName("p")[0].innerText
+
+            let cardTitle = element.getElementsByTagName("h5")[0].innerText
+            if (cardTxt.toLowerCase().includes(searchVal.toLowerCase()) ||
+                cardTxt.toUpperCase().includes(searchVal.toUpperCase()) ||
+                cardTitle.toLowerCase().includes(searchVal.toLowerCase()) ||
+                cardTitle.toUpperCase().includes(searchVal.toUpperCase())) {// so that irrespective of the case the text is searched
+                element.style.display = "block";
+            }
+            else {
+                element.style.display = "none";
+            }
+
+        })
+    })
+
+}
+// sort notes by body
+function search_body() {
+    search_textarea.addEventListener("input", function () {
+
+        let searchVal = search_textarea.value;
+        // console.log(`event triggered!! ${ searchVal } was searched`)
+
+
+        let noteCards = document.getElementsByClassName('noteCards');
+        Array.from(noteCards).forEach(function (element) {
+            let cardTxt = element.getElementsByTagName("p")[0].innerText// as for classnotesCard , the  elements like div etc has only one paragraph tag inside them but still we had addded 0 index
+            // . innerText as else it would be just element and to use include funtion we need string
+
+            //  console.log(cardTxt);
+            if (cardTxt.toLowerCase().includes(searchVal.toLowerCase()) || cardTxt.toUpperCase().includes(searchVal.toUpperCase())) {// so that irrespective of the case the text is searched
+                element.style.display = "block";
+            }
+            else {
+                element.style.display = "none";
+            }
+        })
+
+    })
+
+}
+// sort notes by title
+function search_title() {
+    search_textarea.addEventListener("input", function () {
+
+        let searchVal = search_textarea.value;
+        // console.log(`event triggered!! ${ searchVal } was searched`)
+
+
+        let noteCards = document.getElementsByClassName('noteCards');
+        Array.from(noteCards).forEach(function (element) {
+            let cardTitle = element.getElementsByTagName("h5")[0].innerText// as for classnotesCard , the  elements like div etc has only one paragraph tag inside them but still we had addded 0 index
+            // . innerText as else it would be just element and to use include funtion we need string
+
+            //  console.log(cardTitle);
+            if (cardTitle.toLowerCase().includes(searchVal.toLowerCase()) || cardTitle.toUpperCase().includes(searchVal.toUpperCase())) {// so that irrespective of the case the text is searched
+                element.style.display = "block";
+            }
+            else {
+                element.style.display = "none";
+            }
+        })
+
+    })
+
+}
 let quote = document.getElementById('quote');
 let author = document.getElementById('author');
 // Fetch a random quote from the Quotable API
@@ -166,5 +267,6 @@ async function displayQuote() {
             })
 
     }
+
 }
 
