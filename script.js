@@ -54,6 +54,7 @@ add_note_btn.addEventListener("click", function (e) {
 
 // function to display notes
 function displayNotes() {
+    // console.log("entered display notes")
     let notes = localStorage.getItem("notes");
     if (notes == null) {
         notesObj = [];
@@ -88,12 +89,12 @@ function warning(index) {
     let toast = new bootstrap.Toast(toastLiveExample)
 
     toast.show()
-    console.log("entered warning function")
+    //console.log("entered warning function")
     let confirm_delete = document.getElementById('confirm_delete');
     confirm_delete.addEventListener('click', function () {
-        console.log(index)
+        //console.log(index)
         deleteNote(index);
-        console.log("clicked delete")
+        //console.log("clicked delete")
         document.getElementById("close_warning").click();
     })/*
     let close_warning = document.getElementById('close_warning');
@@ -108,10 +109,7 @@ function warning(index) {
 
 // function to delete notes
 function deleteNote(index) {
-    console.log("entered delete function")
-    //let num = parseInt(index);
-    //console.log(`Deleting note ${ num + 1 } `)
-    // console.log("Deleting note", (num + 1))
+    //console.log("entered delete function")
     let notes = localStorage.getItem("notes");
     if (notes == null) {
         notesObj = [];
@@ -132,15 +130,13 @@ let search_by_title = document.getElementById('search_by_title');
 let search_by_both = document.getElementById('search_by_both');
 let dropdown_title = document.getElementById('dropdownMenuButton2');
 let close_search_btn = document.getElementById('close_search_btn');
-
 //if (search_by_title) {
 search_by_title.addEventListener('click', function () {
-
+    // console.log("entered aerch_by_title event listener")
     dropdown_title.innerHTML = search_by_title.innerHTML;
-    close_search_btn.click();
     search_textarea.style.display = "block";
     close_search_btn.style.display = "block";
-
+    dropdownMenuButton2.style.display = "none";
     search_title();
 })
 // }
@@ -148,7 +144,7 @@ search_by_title.addEventListener('click', function () {
 search_by_body.addEventListener('click', function () {
 
     dropdown_title.innerHTML = search_by_body.innerHTML;
-    close_search_btn.click();
+    dropdownMenuButton2.style.display = "none";
     search_textarea.style.display = "block";
     close_search_btn.style.display = "block";
 
@@ -159,16 +155,17 @@ search_by_body.addEventListener('click', function () {
 search_by_both.addEventListener('click', function () {
 
     dropdown_title.innerHTML = search_by_both.innerHTML;
-    close_search_btn.click();
+    dropdownMenuButton2.style.display = "none";
     search_textarea.style.display = "block";
     close_search_btn.style.display = "block";
-
     search_both()
 })
 //}
 close_search_btn.addEventListener('click', function () {
     search_textarea.value = null;
+    //console.log("entered close search btn event listener")
     displayNotes();
+    document.getElementsByClassName("dropdown").style.display = "block";
 })
 // sort notes by title and body
 function search_both() {
@@ -198,6 +195,7 @@ function search_both() {
 }
 // sort notes by body
 function search_body() {
+
     search_textarea.addEventListener("input", function () {
 
         let searchVal = search_textarea.value;
@@ -223,8 +221,10 @@ function search_body() {
 }
 // sort notes by title
 function search_title() {
-    search_textarea.addEventListener("input", function () {
 
+    // console.log("entered  search_titlle function ")
+    search_textarea.addEventListener("input", function () {
+        //  console.log("entered  search txt event listener")
         let searchVal = search_textarea.value;
         // console.log(`event triggered!! ${ searchVal } was searched`)
 
@@ -250,6 +250,7 @@ let quote = document.getElementById('quote');
 let author = document.getElementById('author');
 // Fetch a random quote from the Quotable API
 async function displayQuote() {
+    console.log("entered display quotes")
     let quote_num = Math.floor(Math.random() * 1643)
     const response = await fetch("https://type.fit/api/quotes")
     const data = await response.json();
