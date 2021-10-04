@@ -23,11 +23,18 @@ add_note_btn.addEventListener("click", function (e) {
 
         alertPlaceholder.append(wrapper)
     }
+    // function so that date is in dd/mm/yyyy format even if d/m<10
+    function appendLeadingZeroes(n) {
+        if (n <= 9) {
+            return "0" + n;
+        }
+        return n
+    }
 
     let add_note_text = document.getElementById('add_note_text');
     let add_note_title = document.getElementById('add_note_title');
     let today = new Date();
-    let current_date = today.getDate() + '/' + (today.getMonth() + 1) + '/' + today.getFullYear();
+    let current_date = appendLeadingZeroes(today.getDate()) + '/' + appendLeadingZeroes(today.getMonth() + 1) + '/' + today.getFullYear();
     let notes = localStorage.getItem("notes");
     if (notes == null) {
         notesObj = [];
@@ -70,6 +77,7 @@ function displayNotes() {
         <div class="noteCards my-2 mx-2 card" style="width: 18rem;">
             <div class="card-body">
             <h6 class="time">${element.date}</h6>
+            <br>
                 <h5 class="card-title">${element.title}</h5>
                 <p class="card-text">${element.text}</p>
                 <button  class="btn btn-primary" id="${index}" onclick="warning(this.id)">Delete Note</button>
@@ -131,6 +139,7 @@ function deleteNote(index) {
 let search_textarea = document.getElementById('search_textarea');
 let search_by_body = document.getElementById('search_by_body');
 let search_by_title = document.getElementById('search_by_title');
+let search_by_date = document.getElementById('search_by_date');
 let search_by_both = document.getElementById('search_by_both');
 let dropdown_title = document.getElementById('dropdownMenuButton2');
 let close_search_btn = document.getElementById('close_search_btn');
@@ -153,6 +162,18 @@ search_by_body.addEventListener('click', function () {
     close_search_btn.style.display = "block";
 
     search_body()
+})
+//}
+//else if (search_by_date) {
+search_by_date.addEventListener('click', function () {
+
+    dropdown_title.innerHTML = search_by_date.innerHTML;
+    dropdownMenuButton2.style.display = "none";
+    search_textarea.style.display = "block";
+    search_textarea.placeholder = "dd/mm/yyyy"
+    close_search_btn.style.display = "block";
+
+    search_date()
 })
 //}
 // else {
@@ -240,6 +261,33 @@ function search_title() {
 
             //  console.log(cardTitle);
             if (cardTitle.toLowerCase().includes(searchVal.toLowerCase()) || cardTitle.toUpperCase().includes(searchVal.toUpperCase())) {// so that irrespective of the case the text is searched
+                element.style.display = "block";
+            }
+            else {
+                element.style.display = "none";
+            }
+        })
+
+    })
+
+}
+// sort notes by date
+function search_date() {
+
+    // console.log("entered  search_titlle function ")
+    search_textarea.addEventListener("input", function () {
+        //  console.log("entered  search txt event listener")
+        let searchVal = search_textarea.value;
+        // console.log(`event triggered!! ${ searchVal } was searched`)
+
+
+        let noteCards = document.getElementsByClassName('noteCards');
+        Array.from(noteCards).forEach(function (element) {
+            let cardDate = element.getElementsByTagName("h6")[0].innerText// as for classnotesCard , the  elements like div etc has only one paragraph tag inside them but still we had addded 0 index
+            // . innerText as else it would be just element and to use include funtion we need string
+
+            //  console.log(cardTitle);
+            if (cardDate.toLowerCase().includes(searchVal.toLowerCase()) || cardDate.toUpperCase().includes(searchVal.toUpperCase())) {// so that irrespective of the case the text is searched
                 element.style.display = "block";
             }
             else {
