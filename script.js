@@ -26,6 +26,8 @@ add_note_btn.addEventListener("click", function (e) {
 
     let add_note_text = document.getElementById('add_note_text');
     let add_note_title = document.getElementById('add_note_title');
+    let today = new Date();
+    let current_date = today.getDate() + '/' + (today.getMonth() + 1) + '/' + today.getFullYear();
     let notes = localStorage.getItem("notes");
     if (notes == null) {
         notesObj = [];
@@ -36,6 +38,7 @@ add_note_btn.addEventListener("click", function (e) {
     let obj = {
         title: add_note_title.value,
         text: add_note_text.value,
+        date: current_date,
     }
     notesObj.push(obj)// therefore notesObj is now array of object
     localStorage.setItem("notes", JSON.stringify(notesObj));
@@ -66,6 +69,7 @@ function displayNotes() {
         html += `
         <div class="noteCards my-2 mx-2 card" style="width: 18rem;">
             <div class="card-body">
+            <h6 class="time">${element.date}</h6>
                 <h5 class="card-title">${element.title}</h5>
                 <p class="card-text">${element.text}</p>
                 <button  class="btn btn-primary" id="${index}" onclick="warning(this.id)">Delete Note</button>

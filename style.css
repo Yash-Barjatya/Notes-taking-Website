@@ -43,7 +43,9 @@ hr:not([size]) {
     color: black;
     box-shadow:0 0px 0px 2px gainsboro ;
 }
-
+.time{
+    float: right;
+}
 .card{
     
     background-color: #41464b;
