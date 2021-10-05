@@ -33,6 +33,15 @@ add_note_btn.addEventListener("click", function (e) {
 
     let add_note_text = document.getElementById('add_note_text');
     let add_note_title = document.getElementById('add_note_title');
+    /* A NOTE WITH NO TITLE WILL BE INVALID */
+    if (add_note_title.value == "") {
+        let no_title = document.getElementById('no_title')
+
+        let toast = new bootstrap.Toast(no_title)
+
+        toast.show();
+        return;
+    }
     let today = new Date();
     let current_date = appendLeadingZeroes(today.getDate()) + '/' + appendLeadingZeroes(today.getMonth() + 1) + '/' + today.getFullYear();
     let notes = localStorage.getItem("notes");
