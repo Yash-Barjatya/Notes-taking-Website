@@ -144,3 +144,6 @@ hr:not([size]) {
 .btn-sm{
     font-size: 18px;
 }
+.edit_note{
+    float: right;
+}

@@ -86,10 +86,12 @@ function displayNotes() {
         <div class="noteCards my-2 mx-2 card" style="width: 18rem;">
             <div class="card-body">
             <h6 class="time">${element.date}</h6>
-            <br>
+            <br><br>
                 <h5 class="card-title">${element.title}</h5>
                 <p class="card-text">${element.text}</p>
-                <button  class="btn btn-primary" id="${index}" onclick="warning(this.id)">Delete Note</button>
+                <br>
+                <button  class="btn btn-primary" id="${index}" onclick="warning(this.id)">Delete </button>
+                <button  class="btn btn-primary edit_note" id="${index}" onclick="edit(this.id)">Edit</button>
                 </div>
         </div>`// this on click part is done so that we can get index of the note to be deleted
     });
@@ -102,7 +104,15 @@ function displayNotes() {
         notes_element.setAttribute("style", "color : aliceblue;font-size:25px; font-family: 'Architects Daughter',sans-serif;");
     }
 }
-
+// function to edit a saved note
+function edit(index) {
+    console.log(notesObj[index]);
+    add_note_title.value = notesObj[index].title
+    add_note_text.value = notesObj[index].text
+    notesObj.splice(index, 1);
+    localStorage.setItem("notes", JSON.stringify(notesObj));
+    displayNotes();
+}
 // warning message on clciking delete note
 function warning(index) {
     let toastLiveExample = document.getElementById('liveToast')
