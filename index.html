@@ -16,121 +16,238 @@
 </head>
 
 <body>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <div class="container-fluid">
-            <a class="navbar-brand" href="#">UP-2-DATE</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
-                aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                    <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="#">Home</a>
-                    </li>
-                </ul>
-                <form class="d-flex">
-                    <input class="form-control me-2" id="search_textarea" placeholder="Search here..."
-                        aria-label="Search"><button id="close_search_btn"><i class="fa fa-close" id="close_search"
-                            style="color:#DDDDDD;"></i></button>
-                    <div class="dropdown">
-                        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton2"
-                            data-bs-toggle="dropdown" aria-expanded="false">
-                            SEARCH TYPE
-                        </button>
-                        <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="dropdownMenuButton2">
-                            <li><button class="dropdown-item" id="search_by_title" type="button"><b>Search in
-                                        title</b></button></li>
-                            <li>
-                                <hr class="dropdown-divider">
-                            </li>
-                            <li><button class="dropdown-item" type="button" id="search_by_body"><b>Search in
-                                        body</b></button></li>
-                            <li>
-                                <hr class="dropdown-divider">
-                            </li>
-                            <li><button class="dropdown-item" type="button" id="search_by_date"><b>Search in
-                                        date</b></button></li>
-                            <li>
-                                <hr class="dropdown-divider">
-                            </li>
-                            <li><button class="dropdown-item" type="button" id="search_by_both"><b>Search
-                                        everywhere</b></button></li>
-                        </ul>
+    <main>
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+            <div class="container-fluid">
+                <a class="navbar-brand" class="note-making site" href="#">UP-2-DATE</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                    aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="#">Home</a>
+                        </li>
+                    </ul>
+                    <form class="d-flex">
+                        <input class="form-control me-2" id="search_textarea" placeholder="Search here..."
+                            aria-label="Search"><button id="close_search_btn"><i class="fa fa-close" id="close_search"
+                                style="color:#DDDDDD;"></i></button>
+                        <div class="dropdown">
+                            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton2"
+                                data-bs-toggle="dropdown" aria-expanded="false">
+                                SEARCH TYPE
+                            </button>
+                            <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="dropdownMenuButton2">
+                                <li><button class="dropdown-item" id="search_by_title" type="button"><b>Search in
+                                            title</b></button></li>
+                                <li>
+                                    <hr class="dropdown-divider">
+                                </li>
+                                <li><button class="dropdown-item" type="button" id="search_by_body"><b>Search in
+                                            body</b></button></li>
+                                <li>
+                                    <hr class="dropdown-divider">
+                                </li>
+                                <li><button class="dropdown-item" type="button" id="search_by_date"><b>Search in
+                                            date</b></button></li>
+                                <li>
+                                    <hr class="dropdown-divider">
+                                </li>
+                                <li><button class="dropdown-item" type="button" id="search_by_both"><b>Search
+                                            everywhere</b></button></li>
+                            </ul>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </nav>
+        <div class="container my-4">
+            <!-- "my-4": will leave a margin of 4 lines in y direction-->
+            <h1 id="welcome">WELCOME TO UP-2-DATE <i class="fa fa-book" aria-hidden="true"></i>
+                <!-- Add class="font-effect-fire" to h1 tag to see fire effect-->
+            </h1>
+            <h5 id="motto">~A place to keep notes and be up-to-date~</h5><br>
+            <hr>
+            <p id="quote">"Loading a new quote.."</p>
+            <small id="author">~Server</small>
+            <br>
+            <hr>
+            <div class="my-2 mx-4 card">
+                <div class="card-body" id="main_card">
+                    <h3 class="card-title">Add a Note</h3>
+
+                    <div class="mb-3">
+                        <textarea class="form-control" id="add_note_title" rows="2" placeholder="Add Title"></textarea>
                     </div>
-                </form>
+                    <div class="mb-3">
+                        <textarea class="form-control" id="add_note_text" rows="4" placeholder="Add Body"></textarea>
+                    </div>
+                    <!--<div id="liveAlertPlaceholder"></div>-->
+                    <button type=" button" class="btn btn-primary" id="add_note_btn" title="Add Note">Add Note</button>
+                </div>
             </div>
+
+            <hr>
+            <h1 id="Your_Notes">Your Notes</h1>
+            <hr>
+            <div id="notes" class="row container-fluid">
+            </div>
+
         </div>
-    </nav>
-    <div class="container my-4">
-        <!-- "my-4": will leave a margin of 4 lines in y direction-->
-        <h1 id="welcome">WELCOME TO UP-2-DATE <i class="fa fa-book" aria-hidden="true"></i>
-            <!-- Add class="font-effect-fire" to h1 tag to see fire effect-->
-        </h1>
-        <h5 id="motto">~A place to keep notes and be up-to-date~</h5><br>
-        <hr>
-        <p id="quote">"Loading a new quote.."</p>
-        <small id="author">~Server</small>
         <br>
-        <hr>
-        <div class="my-2 mx-4 card">
-            <div class="card-body" id="main_card">
-                <h3 class="card-title">Add a Note</h3>
 
-                <div class="mb-3">
-                    <textarea class="form-control" id="add_note_title" rows="2" placeholder="Add Title"></textarea>
+        <div class="position-fixed bottom-0 end-0 p-3" style="z-index: 11">
+            <div id="liveToast" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+                <div class="toast-header">
+                    <i class="fa fa-book" aria-hidden="true"></i>
+                    <strong class="me-auto"> UP-2-DATE</strong>
+                    <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
                 </div>
-                <div class="mb-3">
-                    <textarea class="form-control" id="add_note_text" rows="4" placeholder="Add Body"></textarea>
-                </div>
-                <!--<div id="liveAlertPlaceholder"></div>-->
-                <button type=" button" class="btn btn-primary" id="add_note_btn">Add Note</button>
-            </div>
-        </div>
-
-        <hr>
-        <h1 id="Your_Notes">Your Notes</h1>
-        <hr>
-        <div id="notes" class="row container-fluid">
-        </div>
-
-    </div>
-    <br>
-    <footer class="copyrightText">
-        <p> Copyright &copy 2021 Yash-Barjatya. All rights reserved</p>
-    </footer>
-    <div class="position-fixed bottom-0 end-0 p-3" style="z-index: 11">
-        <div id="liveToast" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
-            <div class="toast-header">
-                <i class="fa fa-book" aria-hidden="true"></i>
-                <strong class="me-auto"> UP-2-DATE</strong>
-                <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
-            </div>
-            <div class="toast-body">
-                <b><i>NOTE:</i></b> Once deleted ,the note cannot be retrieved.<br>Are you sure you want to delete this
-                note?
-                <div class="mt-2 pt-2 border-top">
-                    <button type="button" id="confirm_delete" class="btn btn-primary btn-sm">Delete</button>
-                    <button type="button" id="close_warning" class="btn btn-secondary btn-sm"
-                        data-bs-dismiss="toast">Close</button>
+                <div class="toast-body">
+                    <b><i>NOTE:</i></b> Once deleted ,the note cannot be retrieved.<br>Are you sure you want to delete
+                    this
+                    note?
+                    <div class="mt-2 pt-2 border-top">
+                        <button type="button" id="confirm_delete" class="btn btn-primary btn-sm">Delete</button>
+                        <button type="button" id="close_warning" class="btn btn-secondary btn-sm"
+                            data-bs-dismiss="toast">Close</button>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-    <div class="position-fixed bottom-0 end-0 p-3" style="z-index: 11">
-        <div id="no_title" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
-            <div class="toast-header">
-                <i class="fa fa-book" aria-hidden="true"></i>
-                <strong class="me-auto"> UP-2-DATE</strong>
-                <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+        <div class="position-fixed bottom-0 end-0 p-3" style="z-index: 11">
+            <div id="no_title" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+                <div class="toast-header">
+                    <i class="fa fa-book" aria-hidden="true"></i>
+                    <strong class="me-auto"> UP-2-DATE</strong>
+                    <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+                </div>
+                <div class="toast-body">
+                    <b><i>NOTE:</i></b> Please add a Title to the Note
+                </div>
             </div>
-            <div class="toast-body">
-                <b><i>NOTE:</i></b> Please add a Title to the Note
+
+        </div>
+
+
+        <section id="contact">
+            <div class="container-fluid" data-aos="fade-up">
+
+                <div class="section-header">
+                    <h3>Contact Me</h3>
+                </div>
+
+                <div class="row">
+
+
+
+
+
+
+                    <div class="form">
+                        <form method="post" role="form" class="email-form">
+                            <div class="row">
+                                <div class="form-group my-3 ">
+                                    <input type="text" name="name" class="form-control" id="name"
+                                        placeholder="Your Name" required="">
+                                </div>
+                                <div class="form-group  mt-3 mt-lg-0">
+                                    <input type="email" class="form-control" name="email" id="email"
+                                        placeholder="Your Email" required="">
+                                </div>
+                            </div>
+                            <div class="form-group mt-3 ">
+                                <input type="text" class="form-control" name="subject" id="subject"
+                                    placeholder="Subject" required="">
+                            </div>
+                            <div class="form-group mt-3 ">
+                                <textarea class="form-control" name="message" rows="5" placeholder="Message"
+                                    required=""></textarea>
+                            </div>
+                            <div class="my-3">
+                                <div class="loading">Loading</div>
+                                <div class="error-message"></div>
+                                <div class="sent-message">Your message has been sent. Thank you!</div>
+                            </div>
+                            <div class="text-center"><button type="submit" title="Send Message">Send
+                                    Message</button></div>
+                        </form>
+                    </div>
+
+
+                </div>
+
+            </div>
+        </section>
+    </main>
+    <!-- ======= Footer ======= -->
+    <br><br>
+    <footer id="footer">
+        <div class="footer-top">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-4 col-md-4 footer-info">
+                        <h2>About Developer</h2>
+                        <br>
+                        <h3>Yash Barjatya</h3><br>
+                        <p>A coding enthusiast</p>
+                    </div>
+
+                    <!--  <div class="col-lg-3 col-md-9 footer-note">
+                        <h2>UP-2-DATE</h2>
+
+                    </div>-->
+                    <div class="col-lg-5"></div>
+                    <div class="col-lg-3 col-md-8 footer-contact">
+                        <h2>My Handles</h2><br>
+                        <div class="social-links">
+                            <tr>
+
+                                <a target="_blank" href="mailto:yashbarjatya11@gmail.com"><i
+                                        class="fa fa-envelope fa-2x" aria-hidden="true"></i></i></a>
+
+                                <a href="https://github.com/Yash-Barjatya" target="_blank"><i class="fa fa-github fa-2x"
+                                        aria-hidden="true"></i></i></a>
+
+
+                                <a href="https://in.linkedin.com/in/yash-barjatya-075a95205" target="_blank"><i
+                                        class="fa fa-linkedin fa-2x" aria-hidden="true"></i></a>
+
+
+                                <a href="https://www.instagram.com/__yash__barjatya/?hl=en" target="_blank"><i
+                                        class="fa fa-instagram fa-2x " aria-hidden="true"></i></a>
+
+
+
+                                <a href="https://twitter.com/YBarJain" target="_blank"><i class="fa fa-twitter fa-2x"
+                                        aria-hidden="true"></i></a>
+
+
+
+
+                                <a href="https://www.facebook.com/YBarJain" target="_blank"><i
+                                        class="fa fa-facebook fa-2x" aria-hidden="true"></i></a>
+
+
+                            </tr>
+                        </div>
+
+                    </div>
+                </div>
             </div>
         </div>
-    </div>
 
+        <div class="container">
+            <div class="copyright">
+                <p>&copy; Copyright <strong>Yash-Barjatya</strong>. All Rights Reserved</p>
+            </div>
+    </footer><!-- End Footer -->
+    <button type="button" class="btn btn-danger btn-floating btn-lg" id="btn-back-to-top">
+        <i class="fa fa-arrow-up"></i>
+    </button>
 </body>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ"

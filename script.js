@@ -90,8 +90,8 @@ function displayNotes() {
                 <h5 class="card-title">${element.title}</h5>
                 <p class="card-text">${element.text}</p>
                 <br>
-                <button  class="btn btn-primary" id="${index}" onclick="warning(this.id)">Delete </button>
-                <button  class="btn btn-primary edit_note" id="${index}" onclick="edit(this.id)">Edit</button>
+                <button  class="btn btn-primary" id="${index}" onclick="warning(this.id)" title="Delete Note">Delete </button>
+                <button  class="btn btn-primary edit_note" id="${index}" onclick="edit(this.id)" title="Edit Note">Edit</button>
                 </div>
         </div>`// this on click part is done so that we can get index of the note to be deleted
     });
@@ -342,3 +342,32 @@ async function displayQuote() {
 
 }
 
+/**
+ * Back to top button
+ */
+
+//Get the button
+let mybutton = document.getElementById("btn-back-to-top");
+
+// When the user scrolls down 20px from the top of the document, show the button
+window.onscroll = function () {
+    scrollFunction();
+};
+
+function scrollFunction() {
+    if (
+        document.body.scrollTop > 20 ||
+        document.documentElement.scrollTop > 20
+    ) {
+        mybutton.style.display = "block";
+    } else {
+        mybutton.style.display = "none";
+    }
+}
+// When the user clicks on the button, scroll to the top of the document
+mybutton.addEventListener("click", backToTop);
+
+function backToTop() {
+    document.body.scrollTop = 0;
+    document.documentElement.scrollTop = 0;
+}
