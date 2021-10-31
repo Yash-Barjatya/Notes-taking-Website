@@ -1,6 +1,6 @@
 console.log("Up-2-Date ready to start")
 
-//console.log(quote_num + 1)
+
 displayNotes();
 displayQuote();// this is called so that even if we refresh all the  already existing notes do show up
 // add new notes to local storage
@@ -14,7 +14,7 @@ add_note_btn.addEventListener("click", function (e) {
     main_card.insertBefore(success_div, main_card.firstElementChild.nextElementSibling.nextElementSibling.nextElementSibling)
     success_div.id = "liveAlertPlaceholder"
     var alertPlaceholder = document.getElementById('liveAlertPlaceholder')
-    //console.log(main_card)
+
 
     // funciton to  ALERT success
     function alert(message, type) {
@@ -60,7 +60,7 @@ add_note_btn.addEventListener("click", function (e) {
     localStorage.setItem("notes", JSON.stringify(notesObj));
     add_note_text.value = "";// so that everytime after creation of new notes the texarea is set to blank
     add_note_title.value = "";// so that everytime after creation of new notes the texarea is set to blank
-    //console.log(notesObj);
+
 
     alert('Your Note is successfully added !', 'success')
     displayNotes()
@@ -73,7 +73,7 @@ add_note_btn.addEventListener("click", function (e) {
 
 // function to display notes
 function displayNotes() {
-    // console.log("entered display notes")
+
     let notes = localStorage.getItem("notes");
     if (notes == null) {
         notesObj = [];
@@ -120,19 +120,21 @@ function warning(index) {
     let toast = new bootstrap.Toast(toastLiveExample)
 
     toast.show()
-    //console.log("entered warning function")
+
     let confirm_delete = document.getElementById('confirm_delete');
     confirm_delete.addEventListener('click', function () {
-        //console.log(index)
         deleteNote(index);
-        //console.log("clicked delete")
+
         document.getElementById("close_warning").click();
-    })/*
+    })
     let close_warning = document.getElementById('close_warning');
     close_warning.addEventListener('click', function () {
-        document.getElementById("close_warning").click();
-        console.log(index)
-    })*/
+        location.reload();
+    })
+    let cross_close = document.getElementById('cross_close');
+    cross_close.addEventListener('click', function () {
+        location.reload();
+    })
 }
 
 
@@ -140,14 +142,12 @@ function warning(index) {
 
 // function to delete notes
 function deleteNote(index) {
-    //console.log("entered delete function")
     let notes = localStorage.getItem("notes");
     if (notes == null) {
         notesObj = [];
 
     }
     else notesObj = JSON.parse(notes);
-    console.log(index)
     notesObj.splice(index, 1)// 1 element to be deleted whose index = index\
     localStorage.setItem("notes", JSON.stringify(notesObj));// updating local storage with this new notesObj array
     displayNotes();
@@ -162,9 +162,10 @@ let search_by_date = document.getElementById('search_by_date');
 let search_by_both = document.getElementById('search_by_both');
 let dropdown_title = document.getElementById('dropdownMenuButton2');
 let close_search_btn = document.getElementById('close_search_btn');
+
 //if (search_by_title) {
 search_by_title.addEventListener('click', function () {
-    // console.log("entered aerch_by_title event listener")
+
     dropdown_title.innerHTML = search_by_title.innerHTML;
     search_textarea.style.display = "block";
     close_search_btn.style.display = "block";
@@ -207,7 +208,7 @@ search_by_both.addEventListener('click', function () {
 //}
 close_search_btn.addEventListener('click', function () {
     search_textarea.value = null;
-    //console.log("entered close search btn event listener")
+
     displayNotes();
     document.getElementsByClassName("dropdown").style.display = "block";
 })
@@ -251,7 +252,7 @@ function search_body() {
             let cardTxt = element.getElementsByTagName("p")[0].innerText// as for classnotesCard , the  elements like div etc has only one paragraph tag inside them but still we had addded 0 index
             // . innerText as else it would be just element and to use include funtion we need string
 
-            //  console.log(cardTxt);
+
             if (cardTxt.toLowerCase().includes(searchVal.toLowerCase()) || cardTxt.toUpperCase().includes(searchVal.toUpperCase())) {// so that irrespective of the case the text is searched
                 element.style.display = "block";
             }
@@ -266,9 +267,9 @@ function search_body() {
 // sort notes by title
 function search_title() {
 
-    // console.log("entered  search_titlle function ")
+
     search_textarea.addEventListener("input", function () {
-        //  console.log("entered  search txt event listener")
+
         let searchVal = search_textarea.value;
         // console.log(`event triggered!! ${ searchVal } was searched`)
 
@@ -278,7 +279,7 @@ function search_title() {
             let cardTitle = element.getElementsByTagName("h5")[0].innerText// as for classnotesCard , the  elements like div etc has only one paragraph tag inside them but still we had addded 0 index
             // . innerText as else it would be just element and to use include funtion we need string
 
-            //  console.log(cardTitle);
+
             if (cardTitle.toLowerCase().includes(searchVal.toLowerCase()) || cardTitle.toUpperCase().includes(searchVal.toUpperCase())) {// so that irrespective of the case the text is searched
                 element.style.display = "block";
             }
@@ -293,9 +294,9 @@ function search_title() {
 // sort notes by date
 function search_date() {
 
-    // console.log("entered  search_titlle function ")
+
     search_textarea.addEventListener("input", function () {
-        //  console.log("entered  search txt event listener")
+
         let searchVal = search_textarea.value;
         // console.log(`event triggered!! ${ searchVal } was searched`)
 
@@ -305,7 +306,7 @@ function search_date() {
             let cardDate = element.getElementsByTagName("h6")[0].innerText// as for classnotesCard , the  elements like div etc has only one paragraph tag inside them but still we had addded 0 index
             // . innerText as else it would be just element and to use include funtion we need string
 
-            //  console.log(cardTitle);
+
             if (cardDate.toLowerCase().includes(searchVal.toLowerCase()) || cardDate.toUpperCase().includes(searchVal.toUpperCase())) {// so that irrespective of the case the text is searched
                 element.style.display = "block";
             }
@@ -321,7 +322,7 @@ let quote = document.getElementById('quote');
 let author = document.getElementById('author');
 // Fetch a random quote from the Quotable API
 async function displayQuote() {
-    console.log("entered display quotes")
+
     let quote_num = Math.floor(Math.random() * 1643)
     const response = await fetch("https://type.fit/api/quotes")
     const data = await response.json();
