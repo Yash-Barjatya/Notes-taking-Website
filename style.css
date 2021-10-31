@@ -126,8 +126,9 @@ hr:not([size]) {
     font-family: 'Roboto',sans-serif;
 }
 .toast{
-    width:500px;
-    font-size: large;
+    width:350px;
+    /*height: 300px;*/
+    /*font-size: large;*/ 
     font-weight: 600;
     color: black;
 }
@@ -139,7 +140,8 @@ hr:not([size]) {
     margin-left: 0%;
 }
 #close_warning{
-    margin-left: 70%;
+    
+    float: right;
 }
 .btn-sm{
     font-size: 18px;
