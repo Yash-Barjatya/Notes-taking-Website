@@ -1,6 +1,3 @@
-console.log("Up-2-Date ready to start")
-
-
 displayNotes();
 displayQuote();
 // add new notes to local storage
@@ -55,6 +52,7 @@ add_note_btn.addEventListener("click", function (e) {
         title: add_note_title.value,
         text: add_note_text.value,
         date: current_date,
+        pin: "false"
     }
     notesObj.push(obj)// therefore notesObj is now array of object
     localStorage.setItem("notes", JSON.stringify(notesObj));
@@ -81,10 +79,13 @@ function displayNotes() {
     }// notesObj is the array
     else notesObj = JSON.parse(notes);
     let html = "";
+    let pin_html = "";
     notesObj.forEach(function (element, index) {
-        html += `
+        if (notesObj[index].pin == "false") {
+            html += `
         <div class="noteCards my-2 mx-2 card" style="width: 18rem;">
             <div class="card-body">
+            <i  class="fa fa-thumbtack pin_icon" onclick ="pinUnpin(${index})"></i>
             <h6 class="time">${element.date}</h6>
             <br><br>
                 <h5 class="card-title">${element.title}</h5>
@@ -94,6 +95,22 @@ function displayNotes() {
                 <button  class="btn btn-primary edit_note" id="${index}" onclick="edit(this.id)" title="Edit Note">Edit</button>
                 </div>
         </div>`// this on click part is done so that we can get index of the note to be deleted
+        }
+        else {
+            pin_html += `
+            <div class="noteCards my-2 mx-2 card" style="width: 18rem;">
+                <div class="card-body">
+                <i  class="fa fa-thumbtack pin_icon fa-2x" onclick ="pinUnpin(${index})"></i>
+                <h6 class="time">${element.date}</h6>
+                <br><br>
+                    <h5 class="card-title">${element.title}</h5>
+                    <p class="card-text">${element.text}</p>
+                    <br>
+                    <button  class="btn btn-primary" id="${index}" onclick="warning(this.id)" title="Delete Note">Delete </button>
+                    <button  class="btn btn-primary edit_note" id="${index}" onclick="edit(this.id)" title="Edit Note">Edit</button>
+                    </div>
+            </div>`// this on click part is done so that we can get index of the note to be deleted
+        }
     });
     let notes_element = document.getElementById('notes')
     if (notesObj.length != 0) {
@@ -103,6 +120,36 @@ function displayNotes() {
         notes_element.innerHTML = "You have not added any Notes ! !";
         notes_element.setAttribute("style", "color : aliceblue;font-size:25px; font-family: 'Architects Daughter',sans-serif;");
     }
+    let pin_notes_element = document.getElementById('pin_notes')
+    if (notesObj.length != 0) {
+        pin_notes_element.innerHTML = pin_html;
+
+    }
+    else {
+        pin_notes_element.innerHTML = "You have not pinned any Notes ! !";
+        pin_notes_element.setAttribute("style", "color : aliceblue;font-size:25px; font-family: 'Architects Daughter',sans-serif;");
+    }
+}
+// fnc to pin- unpin notes
+
+function pinUnpin(index) {
+    console.log("entered the pinUnpin fnc")
+    //already pin
+    if (notesObj[index].pin == "true") {
+        console.log("pin boolean before changing : " + notesObj[index].pin)
+        notesObj[index].pin = "false";
+        console.log("entered if fnc  then unenlarged pin");
+        console.log("pin boolean after changing : " + notesObj[index].pin)
+    }
+    else {
+        console.log("pin boolean before changing : " + notesObj[index].pin)
+        console.log("entered else fnc then enlarged pin")
+        notesObj[index].pin = "true";
+        console.log("pin boolean after changing : " + notesObj[index].pin)
+
+    }
+    localStorage.setItem("notes", JSON.stringify(notesObj));// updating local storage with this new notesObj array
+    displayNotes();
 }
 // function to edit a saved note
 function edit(index) {

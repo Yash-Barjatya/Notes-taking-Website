@@ -97,14 +97,26 @@
             </div>
 
             <hr>
-            <h1 id="Your_Notes">Your Notes</h1>
-            <hr>
-            <div id="notes" class="row container-fluid">
-            </div>
+            <section id="My_Notes">
+                <h1 id="Your_Notes">Your Notes</h1>
+                <hr>
+
+                <div id="pinned_notes_container">
+                    <h4 id="pinnedNotes-header">Pinned Notes</h4>
+                    <div id="pin_notes" class="row container-fluid">
+                    </div>
+                </div>
+                <hr>
+                <div id="notes_container">
+                    <h4 id="pinnedNotes-header">All Notes</h4>
+                    <div id="notes" class="row container-fluid">
+                    </div>
+                </div>
+            </section>
 
         </div>
         <br>
-
+        <!-- toast for delete function -->
         <div class="position-fixed bottom-0 end-0 p-3" style="z-index: 11">
             <div id="liveToast" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
                 <div class="toast-header">
@@ -125,6 +137,7 @@
                 </div>
             </div>
         </div>
+        <!-- toast for no title warning -->
         <div class="position-fixed bottom-0 end-0 p-3" style="z-index: 11">
             <div id="no_title" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
                 <div class="toast-header">
@@ -148,15 +161,10 @@
                     <div class="col-lg-4 col-md-4 footer-info">
                         <h2>About Developer</h2>
                         <br>
-                        <h3>Yash Barjatya</h3><br>
+                        <h3><a href="https://yash-barjatya.github.io/HomePage/">Yash Barjatya</a></h3><br>
                         <p>A tireless seeker of knowledge and a budding web develop who loves experimenting with
                             HTML,CSS and JS.</p>
                     </div>
-
-                    <!--  <div class="col-lg-3 col-md-9 footer-note">
-                        <h2>UP-2-DATE</h2>
-
-                    </div>-->
                     <div class="col-lg-5"></div>
                     <div class="col-lg-3 col-md-8 footer-contact">
                         <h2>My Handles</h2><br>
