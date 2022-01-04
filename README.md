@@ -20,4 +20,4 @@
 All the notes are stored in local storage.
 - - - - 
 
-Hope you like it !!
+Hope you like it :)
