@@ -161,6 +161,13 @@ hr:not([size]) {
   font-size: 14px;
 
 }
+#footer .footer-info a{
+    color: aliceblue;
+}
+#footer .footer-info a:hover{
+    color: royalblue;
+    font-size: 26px;
+}
 #footer .footer-top {
  
   background: rgba(33,37,41,1);
@@ -188,7 +195,7 @@ hr:not([size]) {
   font-family: "Audiowide", sans-serif;
   color: #fff;
   font-weight: 400;
-  
+    
 }
 #footer .footer-top .footer-info p {
   font-size: 20px;
