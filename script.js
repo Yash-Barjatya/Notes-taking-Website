@@ -2,7 +2,7 @@ console.log("Up-2-Date ready to start")
 
 
 displayNotes();
-displayQuote();// this is called so that even if we refresh all the  already existing notes do show up
+displayQuote();
 // add new notes to local storage
 
 let add_note_btn = document.getElementById('add_note_btn');
