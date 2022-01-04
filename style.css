@@ -252,3 +252,13 @@ justify-content: space-around;
   border-color: black;
 }
 
+@media only screen and (max-width: 600px)and (min-width: 400px) {
+body{
+    margin-top: 20%;
+}
+}
+@media only screen and (max-width: 400px) {
+body{
+    margin-top: 25%;
+}
+}
