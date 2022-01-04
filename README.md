@@ -1,6 +1,6 @@
 # UP-2-DATE
 
-[UP-2-DATE](https://www.google.com/ "UP-2-DATE: Notes-taking-Website") : A _Notes-taking-Website_ to write your notes, to-do list , reminders with several features.
+[UP-2-DATE](https://yash-barjatya.github.io/Notes-taking-Website/ "UP-2-DATE: Notes-taking-Website") : A _Notes-taking-Website_ to write your notes, to-do list , reminders with several features.
 
 ### Features
 * Add Notes
