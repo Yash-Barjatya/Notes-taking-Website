@@ -133,19 +133,19 @@ function displayNotes() {
 // fnc to pin- unpin notes
 
 function pinUnpin(index) {
-    console.log("entered the pinUnpin fnc")
+    //console.log("entered the pinUnpin fnc")
     //already pin
     if (notesObj[index].pin == "true") {
-        console.log("pin boolean before changing : " + notesObj[index].pin)
+        // console.log("pin boolean before changing : " + notesObj[index].pin)
         notesObj[index].pin = "false";
-        console.log("entered if fnc  then unenlarged pin");
-        console.log("pin boolean after changing : " + notesObj[index].pin)
+        //console.log("entered if fnc  then unenlarged pin");
+        //console.log("pin boolean after changing : " + notesObj[index].pin)
     }
     else {
-        console.log("pin boolean before changing : " + notesObj[index].pin)
-        console.log("entered else fnc then enlarged pin")
+        // console.log("pin boolean before changing : " + notesObj[index].pin)
+        // console.log("entered else fnc then enlarged pin")
         notesObj[index].pin = "true";
-        console.log("pin boolean after changing : " + notesObj[index].pin)
+        // console.log("pin boolean after changing : " + notesObj[index].pin)
 
     }
     localStorage.setItem("notes", JSON.stringify(notesObj));// updating local storage with this new notesObj array
@@ -153,7 +153,7 @@ function pinUnpin(index) {
 }
 // function to edit a saved note
 function edit(index) {
-    console.log(notesObj[index]);
+    //console.log(notesObj[index]);
     add_note_title.value = notesObj[index].title
     add_note_text.value = notesObj[index].text
     notesObj.splice(index, 1);
